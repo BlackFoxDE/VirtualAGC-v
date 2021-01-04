@@ -8,3 +8,5 @@ FROM gitpod/workspace-full
 
 RUN brew install icarus-verilog
 RUN pip install intelhex
+RUN ./scripts/setup_yaYUL.sh
+RUN ./scripts/download_rom.sh Luminary099
