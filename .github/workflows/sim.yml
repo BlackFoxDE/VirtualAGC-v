@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install ilcarus verilog
-        run: apt install iverilog
+        run: sudo apt install iverilog
       - name: Setup yaYUL
         run: ./scripts/setup_yaYUL.sh
       - name: Load rom
