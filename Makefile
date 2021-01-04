@@ -1,5 +1,3 @@
-ROM=Aurora12
-
 MODULES = scaler\
 	  timer\
 	  sq_register\
@@ -55,14 +53,17 @@ SIM_SOURCES = $(COMMON_SOURCES)\
 .phony: all
 all: agc.v test_agc
 
-roms/rom.v: roms/$(ROM).v
-	cp roms/$(ROM).v roms/rom.v
-
-test_agc: $(SIM_SOURCES) roms/rom.v
+test_agc: $(SIM_SOURCES)
 	iverilog -o $@ $(SIM_SOURCES)
+
+simulate: test_agc
+	vvp test_agc -lxt2
+
+view: simulate
+	gtkwave --save agc.gtkw dump.lxt
 
 agc.v: $(FILES)
 	python scripts/generate_agc_backplane.py -o $@ -d modules/ $(MODULES)
 
 clean:
-	rm agc.v roms/rom.v test_agc
+	rm agc.v rom.v test_agc dump.lxt

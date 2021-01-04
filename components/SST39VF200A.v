@@ -217,7 +217,7 @@ module SST39VF200A(A15, A14, A13, A12, A11, A10, A9, A8, NC1, NC2, WE_n, NC3, NC
         if (!CE_n && !OE_n)
         begin
             case (addr)
-`include "roms/rom.v"
+`include "rom.v"
             default: data = 16'hFFFF;
             endcase
         end

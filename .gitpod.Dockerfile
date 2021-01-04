@@ -7,3 +7,4 @@ FROM gitpod/workspace-full
 # More information: https://www.gitpod.io/docs/config-docker/
 
 RUN brew install icarus-verilog
+RUN pip install intelhex
