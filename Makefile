@@ -66,4 +66,4 @@ agc.v: $(FILES)
 	python scripts/generate_agc_backplane.py -o $@ -d modules/ $(MODULES)
 
 clean:
-	rm agc.v rom.v test_agc dump.lxt
+	rm agc.v rom.v test_agc *.lxt
