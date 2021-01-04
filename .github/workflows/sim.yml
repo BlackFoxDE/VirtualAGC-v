@@ -1,4 +1,4 @@
-name: Simulate AGC
+name: Verilog AGC Simulation
 
 on:
   push:
@@ -17,10 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install ilcarus verilog
-        run: sudo apt install iverilog
+        run: sudo apt install iverilog -y
       - name: Setup yaYUL
         run: ./scripts/setup_yaYUL.sh
-      - name: Load rom
+      - name: Downloading Luminary099 source and compiling
         run: ./scripts/download_rom.sh Luminary099
       - name: Simulate
         run: make simulate
