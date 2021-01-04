@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install ilcarus verilog
+        run: apt install iverilog
+      - name: Setup yaYUL
+        run: ./scripts/setup_yaYUL.sh
+      - name: Load rom
+        run: ./scripts/download_rom.sh Luminary099
+      - name: Simulate
+        run: make simulate
