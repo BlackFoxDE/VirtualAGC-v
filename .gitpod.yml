@@ -2,4 +2,4 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: make
+  - init: ./scripts/setup_yaYUL.sh && ./scripts/download_rom.sh Luminary099 && make
