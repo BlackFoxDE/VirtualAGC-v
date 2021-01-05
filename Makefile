@@ -56,6 +56,12 @@ all: agc.v test_agc
 test_agc: $(SIM_SOURCES)
 	iverilog -o $@ $(SIM_SOURCES)
 
+test_agc_live: $(SIM_SOURCES)
+	iverilog -DLIVE_DUMP -o $@ $(SIM_SOURCES)
+
+simulate_live: test_agc_live
+	vvp test_agc_live -lxt2
+
 simulate: test_agc
 	vvp test_agc -lxt2
 
@@ -66,4 +72,4 @@ agc.v: $(FILES)
 	python scripts/generate_agc_backplane.py -o $@ -d modules/ $(MODULES)
 
 clean:
-	rm agc.v rom.v test_agc *.lxt
+	rm agc.v rom.v test_agc test_agc_live *.lxt

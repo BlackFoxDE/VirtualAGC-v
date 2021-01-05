@@ -317,6 +317,178 @@ module main;
 
     always #244.140625 CLOCK = !CLOCK;
 
+`ifdef LIVE_DUMP
+    reg [0:15] a_dump;
+    reg [0:15] l_dump;
+    reg [0:15] q_dump;
+    reg [0:15] z_dump;
+    reg [0:15] b_dump;
+    reg [0:15] g_dump;
+    reg [0:15] x_dump;
+    reg [0:15] y_dump;
+    reg [0:4] fb_dump;
+    reg [0:2] eb_dump;
+    reg [0:5] sq_dump;
+    reg rupt0_dump;
+
+    always @(posedge CLOCK) begin
+
+        a_dump[15] = ~AGC.A08.__A08_1___A1_n;
+        a_dump[14] = ~AGC.A08.__A08_1___A2_n;
+        a_dump[13] = ~AGC.A08.__A08_2___A1_n;
+        a_dump[12] = ~AGC.A08.__A08_2___A2_n;
+        a_dump[11] = ~AGC.A09.__A09_1___A1_n;
+        a_dump[10] = ~AGC.A09.__A09_1___A2_n;
+        a_dump[9] = ~AGC.A09.__A09_2___A1_n;
+        a_dump[8] = ~AGC.A09.__A09_2___A2_n;
+        a_dump[7] = ~AGC.A10.__A10_1___A1_n;
+        a_dump[6] = ~AGC.A10.__A10_1___A2_n;
+        a_dump[5] = ~AGC.A10.__A10_2___A1_n;
+        a_dump[4] = ~AGC.A10.__A10_2___A2_n;
+        a_dump[3] = ~AGC.A11.__A11_1___A1_n;
+        a_dump[2] = ~AGC.A11.__A11_1___A2_n;
+        a_dump[1] = ~AGC.A15_n;
+        a_dump[0] = ~AGC.A16_n;
+
+        l_dump[15] = ~AGC.L01_n;
+        l_dump[14] = ~AGC.L02_n;
+        l_dump[13] = ~AGC.A08.__L03_n;
+        l_dump[12] = ~AGC.L04_n;
+        l_dump[11] = ~AGC.A09.__L05_n;
+        l_dump[10] = ~AGC.A09.__L06_n;
+        l_dump[9] = ~AGC.A09.__L07_n;
+        l_dump[8] = ~AGC.L08_n;
+        l_dump[7] = ~AGC.A10.__L09_n;
+        l_dump[6] = ~AGC.A10.__L10_n;
+        l_dump[5] = ~AGC.A10.__L11_n;
+        l_dump[4] = ~AGC.L12_n;
+        l_dump[3] = ~AGC.A11.__L13_n;
+        l_dump[2] = ~AGC.A11.__L14_n;
+        l_dump[1] = ~AGC.L15_n;
+        l_dump[0] = ~AGC.L16_n;
+
+        q_dump[15] = ~AGC.A08.__A08_1___Q1_n;
+        q_dump[14] = ~AGC.A08.__A08_1___Q2_n;
+        q_dump[13] = ~AGC.A08.__A08_2___Q1_n;
+        q_dump[12] = ~AGC.A08.__A08_2___Q2_n;
+        q_dump[11] = ~AGC.A09.__A09_1___Q1_n;
+        q_dump[10] = ~AGC.A09.__A09_1___Q2_n;
+        q_dump[9] = ~AGC.A09.__A09_2___Q1_n;
+        q_dump[8] = ~AGC.A09.__A09_2___Q2_n;
+        q_dump[7] = ~AGC.A10.__A10_1___Q1_n;
+        q_dump[6] = ~AGC.A10.__A10_1___Q2_n;
+        q_dump[5] = ~AGC.A10.__A10_2___Q1_n;
+        q_dump[4] = ~AGC.A10.__A10_2___Q2_n;
+        q_dump[3] = ~AGC.A11.__A11_1___Q1_n;
+        q_dump[2] = ~AGC.A11.__A11_1___Q2_n;
+        q_dump[1] = ~AGC.A11.__A11_2___Q1_n;
+        q_dump[0] = ~AGC.A11.__A11_2___Q2_n;
+
+        z_dump[15] = ~AGC.A08.__A08_1___Z1_n;
+        z_dump[14] = ~AGC.A08.__A08_1___Z2_n;
+        z_dump[13] = ~AGC.A08.__A08_2___Z1_n;
+        z_dump[12] = ~AGC.A08.__A08_2___Z2_n;
+        z_dump[11] = ~AGC.A09.__A09_1___Z1_n;
+        z_dump[10] = ~AGC.A09.__A09_1___Z2_n;
+        z_dump[9] = ~AGC.A09.__A09_2___Z1_n;
+        z_dump[8] = ~AGC.A09.__A09_2___Z2_n;
+        z_dump[7] = ~AGC.A10.__A10_1___Z1_n;
+        z_dump[6] = ~AGC.A10.__A10_1___Z2_n;
+        z_dump[5] = ~AGC.A10.__A10_2___Z1_n;
+        z_dump[4] = ~AGC.A10.__A10_2___Z2_n;
+        z_dump[3] = ~AGC.A11.__A11_1___Z1_n;
+        z_dump[2] = ~AGC.A11.__A11_1___Z2_n;
+        z_dump[1] = ~AGC.A11.Z15_n;
+        z_dump[0] = ~AGC.A11.Z16_n;
+
+        b_dump[15] = ~AGC.A08.__A08_1___B1_n;
+        b_dump[14] = ~AGC.A08.__A08_1___B2_n;
+        b_dump[13] = ~AGC.A08.__A08_2___B1_n;
+        b_dump[12] = ~AGC.A08.__A08_2___B2_n;
+        b_dump[11] = ~AGC.A09.__A09_1___B1_n;
+        b_dump[10] = ~AGC.A09.__A09_1___B2_n;
+        b_dump[9] = ~AGC.A09.__A09_2___B1_n;
+        b_dump[8] = ~AGC.A09.__A09_2___B2_n;
+        b_dump[7] = ~AGC.A10.__A10_1___B1_n;
+        b_dump[6] = ~AGC.A10.__A10_1___B2_n;
+        b_dump[5] = ~AGC.A10.__A10_2___B1_n;
+        b_dump[4] = ~AGC.A10.__A10_2___B2_n;
+        b_dump[3] = ~AGC.A11.__A11_1___B1_n;
+        b_dump[2] = ~AGC.A11.__A11_1___B2_n;
+        b_dump[1] = ~AGC.A11.__A11_2___B1_n;
+        b_dump[0] = ~AGC.A11.__A11_2___B2_n;
+
+        g_dump[15] = AGC.G01;
+        g_dump[14] = AGC.G02;
+        g_dump[13] = AGC.G03;
+        g_dump[12] = AGC.G04;
+        g_dump[11] = AGC.G05;
+        g_dump[10] = AGC.G06;
+        g_dump[9] = AGC.G07;
+        g_dump[8] = AGC.G08;
+        g_dump[7] = AGC.G09;
+        g_dump[6] = AGC.G10;
+        g_dump[5] = AGC.G11;
+        g_dump[4] = AGC.G12;
+        g_dump[3] = AGC.G13;
+        g_dump[2] = AGC.G14;
+        g_dump[1] = AGC.G15;
+        g_dump[0] = AGC.G16;
+
+        x_dump[15] = AGC.A08.__A08_1__X1;
+        x_dump[14] = AGC.A08.__A08_1__X2;
+        x_dump[13] = AGC.A08.__A08_2__X1;
+        x_dump[12] = AGC.A08.__A08_2__X2;
+        x_dump[11] = AGC.A09.__A09_1__X1;
+        x_dump[10] = AGC.A09.__A09_1__X2;
+        x_dump[9] = AGC.A09.__A09_2__X1;
+        x_dump[8] = AGC.A09.__A09_2__X2;
+        x_dump[7] = AGC.A10.__A10_1__X1;
+        x_dump[6] = AGC.A10.__A10_1__X2;
+        x_dump[5] = AGC.A10.__A10_2__X1;
+        x_dump[4] = AGC.A10.__A10_2__X2;
+        x_dump[3] = AGC.A11.__A11_1__X1;
+        x_dump[2] = AGC.A11.__A11_1__X2;
+        x_dump[1] = AGC.A11.__A11_2__X1;
+        x_dump[0] = AGC.A11.__A11_2__X2;
+        
+        y_dump[15] = AGC.A08.__A08_1__Y1;
+        y_dump[14] = AGC.A08.__A08_1__Y2;
+        y_dump[13] = AGC.A08.__A08_2__Y1;
+        y_dump[12] = AGC.A08.__A08_2__Y2;
+        y_dump[11] = AGC.A09.__A09_1__Y1;
+        y_dump[10] = AGC.A09.__A09_1__Y2;
+        y_dump[9] = AGC.A09.__A09_2__Y1;
+        y_dump[8] = AGC.A09.__A09_2__Y2;
+        y_dump[7] = AGC.A10.__A10_1__Y1;
+        y_dump[6] = AGC.A10.__A10_1__Y2;
+        y_dump[5] = AGC.A10.__A10_2__Y1;
+        y_dump[4] = AGC.A10.__A10_2__Y2;
+        y_dump[3] = AGC.A11.__A11_1__Y1;
+        y_dump[2] = AGC.A11.__A11_1__Y2;
+        y_dump[1] = AGC.A11.__A11_2__Y1;
+        y_dump[0] = AGC.A11.__A11_2__Y2;
+
+        fb_dump[4] = AGC.A15.__A15_1__FB16;
+        fb_dump[3] = AGC.A15.__A15_1__FB14;
+        fb_dump[2] = AGC.A15.__A15_1__FB13;
+        fb_dump[1] = AGC.A15.__A15_1__FB12;
+        fb_dump[0] = AGC.A15.__A15_1__FB11;
+
+        eb_dump[2] = AGC.A15.EB9;
+        eb_dump[1] = AGC.A15.EB10;
+        eb_dump[0] = AGC.A15.__A15_1__EB11;
+
+        sq_dump[5] = AGC.A03.SQR10;
+        sq_dump[4] = AGC.A03.__A03_1__SQR11;
+        sq_dump[3] = AGC.A03.__A03_1__SQR12;
+        sq_dump[2] = AGC.A03.__A03_1__SQR13;
+        sq_dump[1] = AGC.A03.__A03_1__SQR14;
+        sq_dump[0] = AGC.A03.__A03_1__SQR16;
+
+        $display("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump);
+    end
+`endif
 
     ch77_alarm_box RestartMonitor(SIM_RST, SIM_CLK, p4VSW, GND, MDT01, MT01, MDT02, MT05, MDT03, MT12, MDT04, MWL01, MDT05, MWL02, MDT06, MWL03, MDT07, MWL04, MDT08, MWL05, MDT09, MWL06, MDT10, MRCH, MDT11, MWCH, MDT12, MWSG, MDT13, MPAL_n, MDT14, MTCAL_n, MDT15, MRPTAL_n, MDT16, MWATCH_n, MNHSBF, MVFAIL_n, MNHNC, MCTRAL_n, MNHRPT, MSCAFL_n, MTCSAI, MSCDBL_n, MSTRT, MAMU, MSTP, MSBSTP, MRDCH, MLDCH, MONPAR, MONWBK, MLOAD, MREAD, NHALGA, DOSCAL, DBLTST);
     agc AGC(p4VDC, p4VSW, GND, SIM_RST, SIM_CLK, BLKUPL_n, BMGXM, BMGXP, BMGYM, BMGYP, BMGZM, BMGZP, CAURST, CDUFAL, CDUXM, CDUXP, CDUYM, CDUYP, CDUZM, CDUZP, CLOCK, CTLSAT, DBLTST, DKBSNC, DKEND, DKSTRT, DOSCAL, FLTOUT, FREFUN, GATEX_n, GATEY_n, GATEZ_n, GCAPCL, GUIREL, HOLFUN, IMUCAG, IMUFAL, IMUOPR, IN3008, IN3212, IN3213, IN3214, IN3216, IN3301, ISSTOR, LEMATT, LFTOFF, LRIN0, LRIN1, LRRLSC, LVDAGD, MAINRS, MAMU, MANmP, MANmR, MANmY, MANpP, MANpR, MANpY, MARK, MDT01, MDT02, MDT03, MDT04, MDT05, MDT06, MDT07, MDT08, MDT09, MDT10, MDT11, MDT12, MDT13, MDT14, MDT15, MDT16, MKEY1, MKEY2, MKEY3, MKEY4, MKEY5, MLDCH, MLOAD, MNHNC, MNHRPT, MNHSBF, MNIMmP, MNIMmR, MNIMmY, MNIMpP, MNIMpR, MNIMpY, MONPAR, MONWBK, MRDCH, MREAD, MRKREJ, MRKRST, MSTP, MSTRT, MTCSAI, NAVRST, NHALGA, NHVFAL, NKEY1, NKEY2, NKEY3, NKEY4, NKEY5, OPCDFL, OPMSW2, OPMSW3, PCHGOF, PIPAXm, PIPAXp, PIPAYm, PIPAYp, PIPAZm, PIPAZp, ROLGOF, RRIN0, RRIN1, RRPONA, RRRLSC, S4BSAB, SBYBUT, SCAFAL, SHAFTM, SHAFTP, SIGNX, SIGNY, SIGNZ, SMSEPR, SPSRDY, STRPRS, STRT2, TEMPIN, TRANmX, TRANmY, TRANmZ, TRANpX, TRANpY, TRANpZ, TRNM, TRNP, TRST10, TRST9, ULLTHR, UPL0, UPL1, VFAIL, XLNK0, XLNK1, ZEROP, n2FSFAL, CDUXDM, CDUXDP, CDUYDM, CDUYDP, CDUZDM, CDUZDP, CLK, COMACT, DKDATA, KYRLS, MBR1, MBR2, MCTRAL_n, MGOJAM, MGP_n, MIIP, MINHL, MINKL, MNISQ, MON800, MONWT, MOSCAL_n, MPAL_n, MPIPAL_n, MRAG, MRCH, MREQIN, MRGG, MRLG, MRPTAL_n, MRSC, MRULOG, MSCAFL_n, MSCDBL_n, MSP, MSQ10, MSQ11, MSQ12, MSQ13, MSQ14, MSQ16, MSQEXT, MST1, MST2, MST3, MSTPIT_n, MT01, MT02, MT03, MT04, MT05, MT06, MT07, MT08, MT09, MT10, MT11, MT12, MTCAL_n, MTCSA_n, MVFAIL_n, MWAG, MWARNF_n, MWATCH_n, MWBBEG, MWBG, MWCH, MWEBG, MWFBG, MWG, MWL01, MWL02, MWL03, MWL04, MWL05, MWL06, MWL07, MWL08, MWL09, MWL10, MWL11, MWL12, MWL13, MWL14, MWL15, MWL16, MWLG, MWQG, MWSG, MWYG, MWZG, OPEROR, PIPASW, PIPDAT, RESTRT, RLYB01, RLYB02, RLYB03, RLYB04, RLYB05, RLYB06, RLYB07, RLYB08, RLYB09, RLYB10, RLYB11, RYWD12, RYWD13, RYWD14, RYWD16, SBYLIT, SBYREL_n, TMPCAU, UPLACT, VNFLSH);
