@@ -329,7 +329,8 @@ module main;
     reg [0:4] fb_dump;
     reg [0:2] eb_dump;
     reg [0:5] sq_dump;
-    reg rupt0_dump;
+
+    always @(posedge AGC.RUPT0) $display("RUPT0");
 
     always @(posedge CLOCK) begin
 
