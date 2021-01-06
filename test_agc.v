@@ -487,7 +487,7 @@ module main;
         sq_dump[1] = AGC.A03.__A03_1__SQR14;
         sq_dump[0] = AGC.A03.__A03_1__SQR16;
 
-        $display("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump);
+        $display("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o, TIME: %0t", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump, $time);
     end
 `endif
 
