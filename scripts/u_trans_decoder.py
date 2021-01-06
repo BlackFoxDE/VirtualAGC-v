@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import fileinput
 import re
 import sys
