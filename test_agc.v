@@ -490,7 +490,7 @@ module main;
     end
 
     initial begin
-        $monitor("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump);
+        $monitor("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o, FUTEXT: %b", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump, AGC.FUTEXT);
     end
 
 `endif
