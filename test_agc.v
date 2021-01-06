@@ -331,6 +331,7 @@ module main;
     reg [0:5] sq_dump;
 
     always @(posedge AGC.RUPT0) $display("RUPT0");
+    always @(posedge AGC.GOJAM) $display("GOJAM");
 
     always @(posedge CLOCK) begin
 
@@ -486,9 +487,12 @@ module main;
         sq_dump[2] = AGC.A03.__A03_1__SQR13;
         sq_dump[1] = AGC.A03.__A03_1__SQR14;
         sq_dump[0] = AGC.A03.__A03_1__SQR16;
-
-        $display("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o, TIME: %0t", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump, $time);
     end
+
+    initial begin
+        $monitor("A: %o, L: %o, Q: %o, Z: %o, B: %o, G: %o, X: %o, Y: %o, FB: %o, EB %o, SQ: %o", a_dump, l_dump, q_dump, z_dump, b_dump, g_dump, x_dump, y_dump, fb_dump, eb_dump, sq_dump);
+    end
+
 `endif
 
     ch77_alarm_box RestartMonitor(SIM_RST, SIM_CLK, p4VSW, GND, MDT01, MT01, MDT02, MT05, MDT03, MT12, MDT04, MWL01, MDT05, MWL02, MDT06, MWL03, MDT07, MWL04, MDT08, MWL05, MDT09, MWL06, MDT10, MRCH, MDT11, MWCH, MDT12, MWSG, MDT13, MPAL_n, MDT14, MTCAL_n, MDT15, MRPTAL_n, MDT16, MWATCH_n, MNHSBF, MVFAIL_n, MNHNC, MCTRAL_n, MNHRPT, MSCAFL_n, MTCSAI, MSCDBL_n, MSTRT, MAMU, MSTP, MSBSTP, MRDCH, MLDCH, MONPAR, MONWBK, MLOAD, MREAD, NHALGA, DOSCAL, DBLTST);
