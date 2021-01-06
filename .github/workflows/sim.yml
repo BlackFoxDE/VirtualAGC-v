@@ -37,5 +37,7 @@ jobs:
           cd ..
       - name: Downloading Luminary099 source and compiling
         run: ./scripts/download_rom.sh Luminary099
+      - name: Simulate Luminary099 decode
+        run: make simulate_decode
       - name: Simulate Luminary099
         run: make simulate
