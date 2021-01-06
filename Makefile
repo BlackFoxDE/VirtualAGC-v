@@ -62,9 +62,6 @@ test_agc_live: $(SIM_SOURCES)
 simulate_live: test_agc_live
 	vvp test_agc_live -lxt2
 
-simulate_decode: test_agc_live
-	vvp test_agc_live -lxt2 | python3 decoder.py
-
 simulate: test_agc
 	vvp test_agc -lxt2
 
