@@ -502,6 +502,6 @@ module main;
         $dumpfile("dump.lxt");
         $dumpvars(0, main);
         #5000 SIM_RST = 0;
-        #400000 $finish;
+        #400000000 $finish;
     end
 endmodule
