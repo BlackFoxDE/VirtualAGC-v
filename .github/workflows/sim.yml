@@ -30,6 +30,11 @@ jobs:
           cd test
           sh trace-boot.sh
           cd ..
+      - name: Simulate Live trace excluding MAINLOOP
+        run: |
+          cd test
+          sh trace-exclude-mainloop.sh
+          cd ..
       - name: Downloading Luminary099 source and compiling
         run: ./scripts/download_rom.sh Luminary099
       - name: Simulate Luminary099
