@@ -20,6 +20,12 @@ jobs:
         run: sudo apt install iverilog -y
       - name: Setup yaYUL
         run: ./scripts/setup_yaYUL.sh
+      - name: Simulate Live
+        run: |
+          cd test
+          sh compile.sh
+          sh trace-interrupts.sh
+          cd ..
       - name: Downloading Luminary099 source and compiling
         run: ./scripts/download_rom.sh Luminary099
       - name: Simulate
