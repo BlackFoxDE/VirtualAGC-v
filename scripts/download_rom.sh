@@ -1,6 +1,6 @@
 #!/bin/bash
 
-base=https://github.com/LittelAGC/
+base=https://github.com/AGC-stuff/
 
 echo Downloading $1
 git clone $base$1
