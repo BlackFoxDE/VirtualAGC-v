@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Downloading yaYUL
-git clone https://github.com/LittelAGC/yaYUL.git
+git clone https://github.com/AGC-stuff/yaYUL.git
 cd yaYUL
 echo Setting up yaYUL
 cmake .
